@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Modal Verbs — B1 Interactive Presentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #0F172A;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        /* Highlight class for all modal verbs */
+        .modal-verb {
+            color: #15803D;
+            font-weight: 700;
+            background-color: #F0FDF4;
+            padding: 0.08rem 0.35rem;
+            border-radius: 0.35rem;
+            border: 1px solid #BBF7D0;
+            display: inline-block;
+            line-height: 1.3;
+        }
+        .modal-verb-plain {
+            color: #15803D;
+            font-weight: 700;
+        }
+        /* Custom subtle scrollbars for practice grids */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F8FAFC;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+        .slide-transition {
+            animation: fadeIn 0.25s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 min-h-screen flex flex-col justify-between selection:bg-green-100 selection:text-green-900">
+
+    <!-- Top Navigation & Progress Header -->
+    <header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-slate-200 px-4 sm:px-8 py-3">
+        <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-green-700 text-white font-bold text-sm">B1</span>
+                <div>
+                    <h1 class="text-sm sm:text-base font-bold text-slate-900 leading-tight">English Modal Verbs</h1>
+                    <p class="text-xs text-slate-500 hidden sm:block">Gradation Scale, Examples & Interactive Practice</p>
+                </div>
+            </div>
+
+            <!-- Slide Selector & Counter -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <label for="slideSelector" class="sr-only">Jump to slide</label>
+                <select id="slideSelector" onchange="goToSlide(parseInt(this.value))" class="text-xs sm:text-sm bg-slate-50 border border-slate-300 text-slate-800 rounded-lg px-2.5 py-1.5 font-medium focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 cursor-pointer max-w-[190px] sm:max-w-xs">
+                    <!-- Populated dynamically via JS -->
+                </select>
+                <span id="slideCounter" class="text-xs sm:text-sm font-semibold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 whitespace-nowrap">
+                    1 / 12
+                </span>
+            </div>
+        </div>
+        <!-- Subtle Progress Bar -->
+        <div class="max-w-6xl mx-auto mt-2.5 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+            <div id="progressBar" class="h-full bg-green-600 transition-all duration-300 rounded-full" style="width: 8.33%"></div>
+        </div>
+    </header>
+
+    <!-- Main Presentation Stage -->
+    <main class="flex-grow flex items-center justify-center px-4 sm:px-8 py-6 sm:py-8">
+        <div id="slideContainer" class="w-full max-w-6xl slide-transition">
+            <!-- Slide content rendered dynamically -->
+        </div>
+    </main>
+
+    <!-- Bottom Presentation Controls -->
+    <footer class="sticky bottom-0 z-30 bg-white/95 backdrop-blur border-t border-slate-200 px-4 sm:px-8 py-3">
+        <div class="max-w-6xl mx-auto flex items-center justify-between gap-4">
+            <button id="prevBtn" onclick="prevSlide()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 bg-white text-slate-700 font-semibold text-sm hover:bg-slate-50 active:bg-slate-100 disabled:opacity-40 disabled:pointer-events-none transition shadow-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                <span>Previous</span>
+            </button>
+
+            <div class="hidden md:flex items-center gap-1.5" id="dotIndicators">
+                <!-- Slide dots populated via JS -->
+            </div>
+
+            <button id="nextBtn" onclick="nextSlide()" class="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-green-700 text-white font-semibold text-sm hover:bg-green-800 active:bg-green-900 disabled:opacity-40 disabled:pointer-events-none transition shadow-sm">
+                <span>Next</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+    </footer>
+
+    <script>
+        // ==========================================
+        // DATA: COMPLETE PRESENTATION SLIDES (B1)
+        // ==========================================
+        const slidesData = [
+            // SLIDE 1: INTRO & GOLDEN RULES
+            {
+                id: 0,
+                menuTitle: "1. Overview & 3 Golden Rules",
+                type: "intro"
+            },
+            // SLIDE 2: MUST (100% Strength)
+            {
+                id: 1,
+                menuTitle: "2. MUST (Strongest: 100%)",
+                type: "core-modal",
+                title: "MUST / MUSTN'T",
+                strengthPercent: 100,
+                strengthLabel: "Level 1 — Strongest (Strict Obligation & High Certainty)",
+                meaning: [
+                    "<strong>Strict obligation & internal duty:</strong> Something is essential or a strict rule (often coming from the speaker).",
+                    "<strong>Logical certainty (95–100%):</strong> You are almost completely sure something is true based on evidence.",
+                    "<strong>Strong prohibition (<span class='modal-verb-plain'>mustn't</span>):</strong> It is strictly forbidden to do something."
+                ],
+                examples: [
+                    "All passengers <span class='modal-verb'>must</span> show their passports at the border.",
+                    "I really <span class='modal-verb'>must</span> call my grandmother today; it's her birthday.",
+                    "Look at the lights on in their house—they <span class='modal-verb'>must</span> be at home.",
+                    "You <span class='modal-verb'>mustn't</span> touch that wire! It's dangerous."
+                ],
+                miniQuiz: [
+                    {
+                        sentence: "Drivers _____ stop when the traffic light turns red.",
+                        options: ["must", "might", "could"],
+                        answer: "must"
+                    },
+                    {
+                        sentence: "She has been working for 14 hours without a break. She _____ be exhausted.",
+                        options: ["may", "must", "shall"],
+                        answer: "must"
+                    },
+                    {
+                        sentence: "This is a hospital library. You _____ talk loudly here.",
+                        options: ["mustn't", "wouldn't", "couldn't"],
+                        answer: "mustn't"
+                    }
+                ]
+            },
+            // SLIDE 3: SHOULD / OUGHT TO (80% Strength)
+            {
+                id: 2,
+                menuTitle: "3. SHOULD / OUGHT TO (80%)",
+                type: "core-modal",
+                title: "SHOULD / OUGHT TO",
+                strengthPercent: 80,
+                strengthLabel: "Level 2 — Strong Advice & Moral Duty",
+                meaning: [
+                    "<strong>Advice & recommendation:</strong> Saying what is the right or best thing to do (less strict than <span class='modal-verb-plain'>must</span>).",
+                    "<strong>Moral duty & expectation:</strong> Expressing responsibility or what we expect to happen.",
+                    "<strong>Note on <span class='modal-verb-plain'>ought to</span>:</strong> Means the same as <span class='modal-verb-plain'>should</span>, sounds slightly more formal, and always keeps <strong>to</strong>."
+                ],
+                examples: [
+                    "You look pale. You <span class='modal-verb'>should</span> get some rest and drink warm tea.",
+                    "We <span class='modal-verb'>ought to</span> protect the environment for future generations.",
+                    "You <span class='modal-verb'>shouldn't</span> spend so much time looking at your phone before bed.",
+                    "The train left on time, so it <span class='modal-verb'>should</span> arrive in London by 6 PM."
+                ],
+                miniQuiz: [
+                    {
+                        sentence: "If you have a toothache, you _____ make an appointment with a dentist.",
+                        options: ["should", "might", "shall"],
+                        answer: "should"
+                    },
+                    {
+                        sentence: "People _____ to be more polite when writing formal emails.",
+                        options: ["should", "ought", "must"],
+                        answer: "ought"
+                    },
+                    {
+                        sentence: "You _____ eat too much fast food if you want to stay healthy.",
+                        options: ["shouldn't", "couldn't", "wouldn't"],
+                        answer: "shouldn't"
+                    }
+                ]
+            },
+            // SLIDE 4: WILL / WOULD (70% Strength)
+            {
+                id: 3,
+                menuTitle: "4. WILL / WOULD (70%)",
+                type: "core-modal",
+                title: "WILL / WOULD",
+                strengthPercent: 70,
+                strengthLabel: "Level 3 — Determination, Requests & Past Habits",
+                meaning: [
+                    "<strong>Promises & spontaneous decisions (<span class='modal-verb-plain'>will</span>):</strong> Deciding at the moment of speaking or promising to do something.",
+                    "<strong>Polite requests & offers (<span class='modal-verb-plain'>would</span>):</strong> Softer and more polite than <span class='modal-verb-plain'>will</span>.",
+                    "<strong>Repeated past habits (<span class='modal-verb-plain'>would</span>):</strong> Actions someone regularly did in the past."
+                ],
+                examples: [
+                    "Don't worry about the heavy bags—I <span class='modal-verb'>will</span> help you carry them.",
+                    "<span class='modal-verb'>Would</span> you mind closing the window? It's a bit chilly.",
+                    "<span class='modal-verb'>Would</span> you like a cup of coffee while you wait?",
+                    "When we were kids, our grandfather <span class='modal-verb'>would</span> tell us stories every night."
+                ],
+                miniQuiz: [
+                    {
+                        sentence: "The phone is ringing. — I _____ answer it!",
+                        options: ["will", "ought to", "might"],
+                        answer: "will"
+                    },
+                    {
+                        sentence: "_____ you please pass me the salt?",
+                        options: ["Must", "Would", "Shall"],
+                        answer: "Would"
+                    },
+                    {
+                        sentence: "Every summer, we _____ visit our cousins by the sea.",
+                        options: ["would", "may", "must"],
+                        answer: "would"
+                    }
+                ]
+            },
+            // SLIDE 5: SHALL (60% Strength)
+            {
+                id: 4,
+                menuTitle: "5. SHALL (60%)",
+                type: "core-modal",
+                title: "SHALL",
+                strengthPercent: 60,
+                strengthLabel: "Level 4 — Polite Offers & Suggestions",
+                meaning: [
+                    "<strong>Offers of help:</strong> Used in questions with <strong>I</strong> to politely offer assistance.",
+                    "<strong>Suggestions:</strong> Used in questions with <strong>we</strong> to suggest a shared activity.",
+                    "<strong>Formal rules & contracts:</strong> Used in legal or official documents to state a formal requirement."
+                ],
+                examples: [
+                    "<span class='modal-verb'>Shall</span> I open the door for you?",
+                    "It's a lovely evening. <span class='modal-verb'>Shall</span> we go for a walk in the park?",
+                    "What time <span class='modal-verb'>shall</span> we meet outside the cinema?",
+                    "The tenant <span class='modal-verb'>shall</span> pay the rent on the first day of each month."
+                ],
+                miniQuiz: [
+                    {
+                        sentence: "Your suitcase looks heavy. _____ I carry it upstairs for you?",
+                        options: ["Shall", "Would", "Might"],
+                        answer: "Shall"
+                    },
+                    {
+                        sentence: "We're both hungry. _____ we order a pizza tonight?",
+                        options: ["Must", "Shall", "Ought"],
+                        answer: "Shall"
+                    },
+                    {
+                        sentence: "Where _____ I put these folders, Mr. Brown?",
+                        options: ["shall", "would", "ought"],
+                        answer: "shall"
+                    }
+                ]
+            },
+            // SLIDE 6: CAN / COULD (50% Strength)
+            {
+                id: 5,
+                menuTitle: "6. CAN / COULD (50%)",
+                type: "core-modal",
+                title: "CAN / COULD",
+                strengthPercent: 50,
+                strengthLabel: "Level 5 — Ability, Informal Permission & Polite Requests",
+                meaning: [
+                    "<strong>Ability:</strong> <span class='modal-verb-plain'>Can</span> expresses present ability; <span class='modal-verb-plain'>could</span> expresses general ability in the past.",
+                    "<strong>Permission & requests:</strong> <span class='modal-verb-plain'>Can</span> is informal; <span class='modal-verb-plain'>could</span> is much more polite.",
+                    "<strong>General possibility:</strong> Saying something is possible in theory (<span class='modal-verb-plain'>can</span>) or a gentle possibility (<span class='modal-verb-plain'>could</span>)."
+                ],
+                examples: [
+                    "Maria <span class='modal-verb'>can</span> speak three languages fluently.",
+                    "When I was five, I <span class='modal-verb'>could</span> already ride a bicycle.",
+                    "<span class='modal-verb'>Could</span> I borrow your pen for a second, please?",
+                    "Winters in northern Europe <span class='modal-verb'>can</span> be very cold."
+                ],
+                miniQuiz: [
+                    {
+                        sentence: "My brother _____ play the guitar really well.",
+                        options: ["can", "shall", "ought"],
+                        answer: "can"
+                    },
+                    {
+                        sentence: "Excuse me, _____ you tell me the way to the train station?",
+                        options: ["must", "could", "shall"],
+                        answer: "could"
+                    },
+                    {
+                        sentence: "Before he broke his leg, he _____ run 10 kilometers easily.",
+                        options: ["could", "may", "will"],
+                        answer: "could"
+                    }
+                ]
+            },
+            // SLIDE 7: MAY (40% Strength)
+            {
+                id: 6,
+                menuTitle: "7. MAY (40%)",
+                type: "core-modal",
+                title: "MAY",
+                strengthPercent: 40,
+                strengthLabel: "Level 6 — Formal Permission & Moderate Possibility (~50%)",
+                meaning: [
+                    "<strong>Formal permission:</strong> Asking for or giving permission politely in formal situations.",
+                    "<strong>Moderate possibility (~50%):</strong> Saying that something is possibly true or will possibly happen.",
+                    "<strong>Polite wishes:</strong> Used in formal expressions of hope or good wishes."
+                ],
+                examples: [
+                    "<span class='modal-verb'>May</span> I ask a question about the final exam?",
+                    "Students <span class='modal-verb'>may</span> use a dictionary during the translation test.",
+                    "Take an umbrella—it <span class='modal-verb'>may</span> rain later this afternoon.",
+                    "I <span class='modal-verb'>may</span> be a few minutes late because of the traffic."
+                ],
+                miniQuiz: [
+                    {
+                        sentence: "_____ I come in, Professor? I have the documents you requested.",
+                        options: ["May", "Must", "Will"],
+                        answer: "May"
+                    },
+                    {
+                        sentence: "He hasn't decided yet, so he _____ join us for dinner tonight.",
+                        options: ["may", "shall", "ought"],
+                        answer: "may"
+                    },
+                    {
+                        sentence: "Visitors _____ not take flash photographs inside the art gallery.",
+                        options: ["may", "would", "could"],
+                        answer: "may"
+                    }
+                ]
+            },
+            // SLIDE 8: MIGHT (25% Strength - Weakest)
+            {
+                id: 7,
+                menuTitle: "8. MIGHT (Weakest: 25%)",
+                type: "core-modal",
+                title: "MIGHT",
+                strengthPercent: 25,
+                strengthLabel: "Level 7 — Weakest / Softest (Low Possibility ~20–30%)",
+                meaning: [
+                    "<strong>Weak or remote possibility (20–30%):</strong> Less certain than <span class='modal-verb-plain'>may</span>. Something is possible, but unlikely.",
+                    "<strong>Tentative suggestions:</strong> Making a very gentle, non-pushy suggestion.",
+                    "<strong>Past form of <span class='modal-verb-plain'>may</span>:</strong> Used in reported speech."
+                ],
+                examples: [
+                    "The sky is clear right now, though it <span class='modal-verb'>might</span> get cloudy tonight.",
+                    "If you buy a lottery ticket, you <span class='modal-verb'>might</span> win, but don't count on it!",
+                    "You <span class='modal-verb'>might</span> want to check your spelling before sending the application.",
+                    "She said she <span class='modal-verb'>might</span> visit London next year."
+                ],
+                miniQuiz: [
+                    {
+                        sentence: "I'm not sure where Sarah is. She _____ be in the garden, or maybe she went shopping.",
+                        options: ["might", "must", "shall"],
+                        answer: "might"
+                    },
+                    {
+                        sentence: "There is only a 10% chance of snow, so we _____ need our winter boots.",
+                        options: ["might", "must", "will"],
+                        answer: "might"
+                    },
+                    {
+                        sentence: "If you're bored, you _____ try reading this new mystery novel.",
+                        options: ["might", "must", "shall"],
+                        answer: "might"
+                    }
+                ]
+            },
+            // SLIDE 9: 20-SENTENCE CORE MODALS PRACTICE
+            {
+                id: 8,
+                menuTitle: "9. Practice: 20 Core Modals Sentences",
+                type: "quiz-20",
+                title: "Core Modal Verbs — 20-Sentence Practice",
+                subtitle: "Choose the most appropriate modal verb from the three options for each sentence.",
+                questions: [
+                    { s: "1. You _____ wear a helmet when riding a motorbike; it's the law.", opts: ["must", "might", "could"], a: "must" },
+                    { s: "2. _____ you like me to make you a cup of green tea?", opts: ["Shall", "Would", "Must"], a: "Would" },
+                    { s: "3. Look at those dark clouds! It _____ rain very soon.", opts: ["may", "shall", "would"], a: "may" },
+                    { s: "4. When I lived in Paris, I _____ walk along the river every morning.", opts: ["would", "must", "may"], a: "would" },
+                    { s: "5. _____ we take a short break now? Everyone looks tired.", opts: ["Shall", "Would", "Must"], a: "Shall" },
+                    { s: "6. You _____ apologize to Tom; what you said was really unkind.", opts: ["should", "might", "could"], a: "should" },
+                    { s: "7. My grandfather _____ speak four languages when he was young.", opts: ["could", "shall", "must"], a: "could" },
+                    { s: "8. _____ I use your office phone for a moment, Mr. Davis?", opts: ["May", "Shall", "Would"], a: "May" },
+                    { s: "9. He's been driving all night without sleep. He _____ be exhausted.", opts: ["must", "might", "shall"], a: "must" },
+                    { s: "10. I'm not sure about my weekend plans—I _____ stay home and read.", opts: ["might", "must", "shall"], a: "might" },
+                    { s: "11. Students _____ to submit their essays before Friday afternoon.", opts: ["ought", "should", "must"], a: "ought" },
+                    { s: "12. Don't worry about the dishes. I _____ wash them after dinner.", opts: ["will", "might", "ought"], a: "will" },
+                    { s: "13. You _____ tell anyone this secret—it's strictly between us!", opts: ["mustn't", "couldn't", "wouldn't"], a: "mustn't" },
+                    { s: "14. _____ you pass me the remote control, please?", opts: ["Could", "Shall", "May"], a: "Could" },
+                    { s: "15. _____ I help you carry those heavy boxes to your car?", opts: ["Shall", "Would", "Might"], a: "Shall" },
+                    { s: "16. She _____ swim very fast; she won three medals last year.", opts: ["can", "may", "shall"], a: "can" },
+                    { s: "17. You _____ eat more vegetables if you want to have more energy.", opts: ["should", "might", "shall"], a: "should" },
+                    { s: "18. Take a jacket with you; it _____ get cold in the mountains tonight.", opts: ["might", "must", "shall"], a: "might" },
+                    { s: "19. Visitors _____ enter this area without a special security pass.", opts: ["may not", "wouldn't", "shan't"], a: "may not" },
+                    { s: "20. If you don't hurry, we _____ miss the beginning of the concert.", opts: ["will", "ought", "shall"], a: "will" }
+                ]
+            },
+            // SLIDE 10: EQUIVALENTS PART 1 (HAVE TO, BE ABLE TO, BE ALLOWED TO)
+            {
+                id: 9,
+                menuTitle: "10. Equivalents 1: Have to, Able to, Allowed to",
+                type: "equivalents",
+                title: "Modal Equivalents (Part 1)",
+                subtitle: "Core modals don't have all tense forms (past, future, infinitive). We use these equivalents instead:",
+                items: [
+                    {
+                        name: "HAVE TO / HAS TO / HAD TO",
+                        replaces: "Replaces MUST (external obligation & all tenses)",
+                        desc: "Used when rules, laws, or outside situations force you to do something. In the negative, <span class='modal-verb-plain'>don't have to</span> means <em>no obligation</em> (it is optional).",
+                        examples: [
+                            "I <span class='modal-verb'>have to</span> wear a uniform at my job.",
+                            "Yesterday, she <span class='modal-verb'>had to</span> stay late at the office.",
+                            "You <span class='modal-verb'>don't have to</span> come if you're busy—it's completely optional."
+                        ]
+                    },
+                    {
+                        name: "BE ABLE TO",
+                        replaces: "Replaces CAN / COULD (ability in all tenses)",
+                        desc: "Used for ability in the future (<span class='modal-verb-plain'>will be able to</span>), present perfect (<span class='modal-verb-plain'>have been able to</span>), or specific past achievements (<span class='modal-verb-plain'>was able to</span>).",
+                        examples: [
+                            "Next month, I <span class='modal-verb'>will be able to</span> drive on my own.",
+                            "Despite the heavy traffic, we <span class='modal-verb'>were able to</span> catch the flight.",
+                            "She hasn't <span class='modal-verb'>been able to</span> sleep well lately."
+                        ]
+                    },
+                    {
+                        name: "BE ALLOWED TO",
+                        replaces: "Replaces MAY / CAN (permission in all tenses)",
+                        desc: "Used to talk about having permission in the past, future, or general rules.",
+                        examples: [
+                            "Children under 12 <span class='modal-verb'>aren't allowed to</span> watch this movie.",
+                            "When I was a teenager, I <span class='modal-verb'>wasn't allowed to</span> stay out past 10 PM.",
+                            "You <span class='modal-verb'>will be allowed to</span> take a 15-minute break after the test."
+                        ]
+                    }
+                ],
+                miniQuiz: [
+                    {
+                        sentence: "Tomorrow is Sunday, so I _____ wake up early for work.",
+                        options: ["don't have to", "mustn't", "wasn't able to"],
+                        answer: "don't have to"
+                    },
+                    {
+                        sentence: "After two months of practice, Leo _____ finally swim across the pool yesterday.",
+                        options: ["was able to", "has to", "is allowed to"],
+                        answer: "was able to"
+                    },
+                    {
+                        sentence: "Passengers _____ use mobile phones during takeoff.",
+                        options: ["are not allowed to", "don't have to", "won't be able to"],
+                        answer: "are not allowed to"
+                    },
+                    {
+                        sentence: "Next year, she _____ speak English much better after living in Dublin.",
+                        options: ["will be able to", "had to", "was allowed to"],
+                        answer: "will be able to"
+                    }
+                ]
+            },
+            // SLIDE 11: EQUIVALENTS PART 2 (NEED, USED TO, DARE)
+            {
+                id: 10,
+                menuTitle: "11. Equivalents 2: Need, Used to, Dare",
+                type: "equivalents",
+                title: "Modal Equivalents (Part 2)",
+                subtitle: "Semi-modal verbs expressing necessity, past habits, and courage:",
+                items: [
+                    {
+                        name: "NEED / NEED TO / NEEDN'T",
+                        replaces: "Necessity & lack of necessity",
+                        desc: "<span class='modal-verb-plain'>Need to</span> works like a regular verb for necessity. <span class='modal-verb-plain'>Needn't</span> (or <span class='modal-verb-plain'>don't need to</span>) means something is unnecessary.",
+                        examples: [
+                            "We <span class='modal-verb'>need to</span> buy some groceries before the store closes.",
+                            "You <span class='modal-verb'>needn't</span> bring any food; everything is already prepared.",
+                            "Does he <span class='modal-verb'>need to</span> sign this form today?"
+                        ]
+                    },
+                    {
+                        name: "USED TO",
+                        replaces: "Past habits & states (no longer true)",
+                        desc: "Describes repeated actions or situations in the past that do not happen anymore. Questions and negatives use <strong>did / didn't use to</strong>.",
+                        examples: [
+                            "I <span class='modal-verb'>used to</span> play tennis every weekend, but now I don't have time.",
+                            "There <span class='modal-verb'>used to</span> be an old cinema on this street.",
+                            "She <span class='modal-verb'>didn't use to</span> like coffee, but now she drinks it daily."
+                        ]
+                    },
+                    {
+                        name: "DARE (DARE TO)",
+                        replaces: "Having courage or boldness",
+                        desc: "Means 'to be brave enough to do something'. Often used in questions, negatives, or the phrase <span class='modal-verb-plain'>How dare you!</span>",
+                        examples: [
+                            "Nobody <span class='modal-verb'>dared to</span> ask the manager about the mistake.",
+                            "How <span class='modal-verb'>dare</span> you read my private messages without asking!",
+                            "I wouldn't <span class='modal-verb'>dare</span> jump from that high cliff."
+                        ]
+                    }
+                ],
+                miniQuiz: [
+                    {
+                        sentence: "My dad _____ smoke 20 cigarettes a day, but he quit five years ago.",
+                        options: ["used to", "needn't", "dared"],
+                        answer: "used to"
+                    },
+                    {
+                        sentence: "You _____ wash the car today—it's going to rain all afternoon!",
+                        options: ["needn't", "used to", "dare to"],
+                        answer: "needn't"
+                    },
+                    {
+                        sentence: "The dog looked so angry that nobody _____ go near the gate.",
+                        options: ["dared to", "used to", "needn't"],
+                        answer: "dared to"
+                    },
+                    {
+                        sentence: "_____ you _____ live in a small village before moving to the city?",
+                        options: ["Did / use to", "Need / to", "Dare / to"],
+                        answer: "Did / use to"
+                    }
+                ]
+            },
+            // SLIDE 12: FINAL EQUIVALENTS PRACTICE (8 SENTENCES)
+            {
+                id: 11,
+                menuTitle: "12. Practice: Modal Equivalents",
+                type: "quiz-equivalents",
+                title: "Modal Equivalents — Final Review Practice",
+                subtitle: "Complete all 8 sentences using the correct modal equivalent.",
+                questions: [
+                    { s: "1. In many countries, students _____ wear school uniforms every day.", opts: ["have to", "used to", "dare"], a: "have to" },
+                    { s: "2. Don't worry about buying tickets in advance—we _____ get them at the entrance.", opts: ["will be able to", "used to", "had to"], a: "will be able to" },
+                    { s: "3. I _____ live in Madrid when I was a university student.", opts: ["used to", "am allowed to", "needn't"], a: "used to" },
+                    { s: "4. You _____ hurry; our train doesn't leave for another two hours.", opts: ["needn't", "had to", "used to"], a: "needn't" },
+                    { s: "5. Are visitors _____ feed the animals in this national park?", opts: ["allowed to", "used to", "dared to"], a: "allowed to" },
+                    { s: "6. He was so frightened that he didn't even _____ speak.", opts: ["dare", "have to", "used to"], a: "dare" },
+                    { s: "7. The road was blocked by snow, so we _____ take a different route.", opts: ["had to", "were allowed to", "used to"], a: "had to" },
+                    { s: "8. My grandmother _____ bake fresh bread every Sunday when I was a child.", opts: ["used to", "has to", "is able to"], a: "used to" }
+                ]
+            }
+        ];
+
+        // ==========================================
+        // STATE & NAVIGATION LOGIC
+        // ==========================================
+        let currentSlide = 0;
+
+        // Track user answers per slide so switching slides preserves progress
+        // Structure: { slideIndex: { questionIndex: selectedOptionString } }
+        const userAnswers = {};
+
+        function initPresentation() {
+            const selector = document.getElementById('slideSelector');
+            const dotsContainer = document.getElementById('dotIndicators');
+
+            slidesData.forEach((slide, idx) => {
+                const option = document.createElement('option');
+                option.value = idx;
+                option.textContent = slide.menuTitle;
+                selector.appendChild(option);
+
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.title = slide.menuTitle;
+                dot.onclick = () => goToSlide(idx);
+                dot.className = "w-2.5 h-2.5 rounded-full transition-all duration-200 bg-slate-300 hover:bg-green-500";
+                dot.id = `dot-${idx}`;
+                dotsContainer.appendChild(dot);
+            });
+
+            renderSlide();
+        }
+
+        function goToSlide(index) {
+            if (index >= 0 && index < slidesData.length) {
+                currentSlide = index;
+                renderSlide();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlide < slidesData.length - 1) {
+                goToSlide(currentSlide + 1);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                goToSlide(currentSlide - 1);
+            }
+        }
+
+        // Keyboard Arrow Support (Left / Right)
+        document.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'SELECT' || e.target.tagName === 'INPUT') return;
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // ==========================================
+        // EXERCISE INTERACTION HANDLERS
+        // ==========================================
+        function selectAnswer(slideIdx, qIdx, chosenOption) {
+            if (!userAnswers[slideIdx]) {
+                userAnswers[slideIdx] = {};
+            }
+            userAnswers[slideIdx][qIdx] = chosenOption;
+            renderSlide(false); // Re-render without scroll jump
+        }
+
+        function resetSlideAnswers(slideIdx) {
+            delete userAnswers[slideIdx];
+            renderSlide(false);
+        }
+
+        // ==========================================
+        // RENDERING ENGINE
+        // ==========================================
+        function renderSlide(animate = true) {
+            const slide = slidesData[currentSlide];
+            const container = document.getElementById('slideContainer');
+
+            // Update header controls
+            document.getElementById('slideSelector').value = currentSlide;
+            document.getElementById('slideCounter').textContent = `${currentSlide + 1} / ${slidesData.length}`;
+            document.getElementById('progressBar').style.width = `${((currentSlide + 1) / slidesData.length) * 100}%`;
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === slidesData.length - 1;
+
+            // Update dots
+            slidesData.forEach((_, idx) => {
+                const dot = document.getElementById(`dot-${idx}`);
+                if (dot) {
+                    if (idx === currentSlide) {
+                        dot.className = "w-6 h-2.5 rounded-full transition-all duration-200 bg-green-700";
+                    } else {
+                        dot.className = "w-2.5 h-2.5 rounded-full transition-all duration-200 bg-slate-300 hover:bg-green-500";
+                    }
+                }
+            });
+
+            if (animate) {
+                container.classList.remove('slide-transition');
+                void container.offsetWidth; // trigger reflow
+                container.classList.add('slide-transition');
+            }
+
+            if (slide.type === 'intro') {
+                container.innerHTML = renderIntroSlide();
+            } else if (slide.type === 'core-modal') {
+                container.innerHTML = renderCoreModalSlide(slide, currentSlide);
+            } else if (slide.type === 'quiz-20') {
+                container.innerHTML = renderLargeQuizSlide(slide, currentSlide, true);
+            } else if (slide.type === 'equivalents') {
+                container.innerHTML = renderEquivalentsSlide(slide, currentSlide);
+            } else if (slide.type === 'quiz-equivalents') {
+                container.innerHTML = renderLargeQuizSlide(slide, currentSlide, false);
+            }
+        }
+
+        // 1. INTRO SLIDE TEMPLATE
+        function renderIntroSlide() {
+            return `
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-10 shadow-sm">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 border border-green-200 text-green-800 text-xs font-bold uppercase tracking-wider mb-4">
+                        Intermediate Grammar • CEFR Level B1
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+                        English <span class="text-green-700">Modal Verbs</span> & Equivalents
+                    </h2>
+                    <p class="text-base sm:text-lg text-slate-600 max-w-3xl leading-relaxed mb-8">
+                        Modal verbs are special auxiliary verbs that express attitude, necessity, ability, permission, advice, or possibility. In this presentation, we explore core modals from the <strong>strongest</strong> to the <strong>softest</strong>, followed by modal equivalents.
+                    </p>
+
+                    <!-- 3 Golden Rules -->
+                    <div class="mb-8">
+                        <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 mb-3">3 Golden Grammar Rules for Core Modal Verbs</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                                <div class="w-8 h-8 rounded-lg bg-green-700 text-white font-bold flex items-center justify-center mb-3">1</div>
+                                <h4 class="font-bold text-slate-900 mb-1.5">No "-s" in 3rd Person</h4>
+                                <p class="text-sm text-slate-600 mb-2">Modal verbs never change form for <em>he, she,</em> or <em>it</em>.</p>
+                                <p class="text-sm bg-white p-2.5 rounded-lg border border-slate-200">
+                                    ✓ She <span class="modal-verb">can</span> swim.<br>
+                                    <span class="text-slate-400 line-through">✗ She cans swim.</span>
+                                </p>
+                            </div>
+                            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                                <div class="w-8 h-8 rounded-lg bg-green-700 text-white font-bold flex items-center justify-center mb-3">2</div>
+                                <h4 class="font-bold text-slate-900 mb-1.5">Bare Infinitive (No "to")</h4>
+                                <p class="text-sm text-slate-600 mb-2">Always use the base verb without <em>to</em> (exception: <span class="modal-verb-plain">ought to</span>).</p>
+                                <p class="text-sm bg-white p-2.5 rounded-lg border border-slate-200">
+                                    ✓ You <span class="modal-verb">must</span> go now.<br>
+                                    <span class="text-slate-400 line-through">✗ You must to go now.</span>
+                                </p>
+                            </div>
+                            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                                <div class="w-8 h-8 rounded-lg bg-green-700 text-white font-bold flex items-center justify-center mb-3">3</div>
+                                <h4 class="font-bold text-slate-900 mb-1.5">No "Do / Does / Did"</h4>
+                                <p class="text-sm text-slate-600 mb-2">Make questions and negatives directly with the modal verb.</p>
+                                <p class="text-sm bg-white p-2.5 rounded-lg border border-slate-200">
+                                    ✓ <span class="modal-verb">Should</span> I call him?<br>
+                                    ✓ You <span class="modal-verb">shouldn't</span> worry.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gradation Preview Scale -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                        <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
+                            <span>Strongest (100% Obligation / Certainty)</span>
+                            <span>Softest / Weakest (25% Possibility)</span>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                            <button onclick="goToSlide(1)" class="p-2.5 rounded-lg bg-white border border-green-300 hover:bg-green-50 text-center transition">
+                                <div class="text-green-700 font-extrabold text-sm">MUST</div>
+                                <div class="text-[11px] text-slate-500">100% Strict</div>
+                            </button>
+                            <button onclick="goToSlide(2)" class="p-2.5 rounded-lg bg-white border border-slate-200 hover:border-green-400 hover:bg-green-50 text-center transition">
+                                <div class="text-green-700 font-extrabold text-sm">SHOULD</div>
+                                <div class="text-[11px] text-slate-500">80% Advice</div>
+                            </button>
+                            <button onclick="goToSlide(3)" class="p-2.5 rounded-lg bg-white border border-slate-200 hover:border-green-400 hover:bg-green-50 text-center transition">
+                                <div class="text-green-700 font-extrabold text-sm">WILL/WOULD</div>
+                                <div class="text-[11px] text-slate-500">70% Intent</div>
+                            </button>
+                            <button onclick="goToSlide(4)" class="p-2.5 rounded-lg bg-white border border-slate-200 hover:border-green-400 hover:bg-green-50 text-center transition">
+                                <div class="text-green-700 font-extrabold text-sm">SHALL</div>
+                                <div class="text-[11px] text-slate-500">60% Offer</div>
+                            </button>
+                            <button onclick="goToSlide(5)" class="p-2.5 rounded-lg bg-white border border-slate-200 hover:border-green-400 hover:bg-green-50 text-center transition">
+                                <div class="text-green-700 font-extrabold text-sm">CAN/COULD</div>
+                                <div class="text-[11px] text-slate-500">50% Ability</div>
+                            </button>
+                            <button onclick="goToSlide(6)" class="p-2.5 rounded-lg bg-white border border-slate-200 hover:border-green-400 hover:bg-green-50 text-center transition">
+                                <div class="text-green-700 font-extrabold text-sm">MAY</div>
+                                <div class="text-[11px] text-slate-500">40% Formal</div>
+                            </button>
+                            <button onclick="goToSlide(7)" class="p-2.5 rounded-lg bg-white border border-slate-200 hover:border-green-400 hover:bg-green-50 text-center transition">
+                                <div class="text-green-700 font-extrabold text-sm">MIGHT</div>
+                                <div class="text-[11px] text-slate-500">25% Weak</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 2. CORE MODAL SLIDE TEMPLATE (Slides 2 to 8)
+        function renderCoreModalSlide(slide, slideIdx) {
+            const answers = userAnswers[slideIdx] || {};
+            const hasAnsweredAny = Object.keys(answers).length > 0;
+
+            return `
+                <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-8 shadow-sm">
+                    <!-- Top Header & Strength Bar -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-200 mb-6">
+                        <div>
+                            <span class="inline-block text-xs font-bold uppercase tracking-wider text-green-800 bg-green-50 border border-green-200 px-3 py-1 rounded-full mb-2">
+                                ${slide.strengthLabel}
+                            </span>
+                            <h2 class="text-3xl sm:text-4xl font-extrabold text-green-700 tracking-tight">
+                                ${slide.title}
+                            </h2>
+                        </div>
+
+                        <!-- Visual Gradation Meter -->
+                        <div class="w-full md:w-64 bg-slate-50 border border-slate-200 rounded-xl p-3">
+                            <div class="flex justify-between text-xs font-bold text-slate-600 mb-1.5">
+                                <span>Strength / Force</span>
+                                <span class="text-green-700">${slide.strengthPercent}%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-green-600 rounded-full transition-all duration-300" style="width: ${slide.strengthPercent}%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Two-Column Content: Meaning + Examples on Left, Interactive Mini-Practice on Right -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                        <!-- Left Column: Meaning & Examples (7 cols) -->
+                        <div class="lg:col-span-7 space-y-5">
+                            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">Meaning & Usage</h3>
+                                <ul class="space-y-2.5 text-sm sm:text-base text-slate-800">
+                                    ${slide.meaning.map(item => `
+                                        <li class="flex items-start gap-2.5">
+                                            <span class="text-green-700 font-bold mt-0.5">•</span>
+                                            <span>${item}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+
+                            <div class="bg-white border border-slate-200 rounded-xl p-5">
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">Examples</h3>
+                                <ul class="space-y-3 text-sm sm:text-base text-slate-800">
+                                    ${slide.examples.map((ex, i) => `
+                                        <li class="flex items-start gap-3 p-2.5 rounded-lg bg-slate-50/70 border border-slate-100">
+                                            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-100 text-green-800 font-bold text-xs shrink-0 mt-0.5">${i + 1}</span>
+                                            <span class="leading-relaxed">${ex}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Quick Practice (5 cols) -->
+                        <div class="lg:col-span-5 bg-slate-50 border border-slate-200 rounded-xl p-5">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700">Quick Practice</h3>
+                                ${hasAnsweredAny ? `
+                                    <button onclick="resetSlideAnswers(${slideIdx})" class="text-xs font-semibold text-slate-600 hover:text-slate-900 underline">
+                                        Reset
+                                    </button>
+                                ` : ''}
+                            </div>
+
+                            <div class="space-y-4">
+                                ${slide.miniQuiz.map((q, qIdx) => renderQuestionCard(slideIdx, qIdx, q, answers[qIdx])).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Helper for rendering a single multiple-choice question card
+        function renderQuestionCard(slideIdx, qIdx, q, selectedVal) {
+            const isAnswered = selectedVal !== undefined;
+            const formattedSentence = isAnswered
+                ? q.sentence.replace('_____', `<span class="modal-verb">${selectedVal}</span>`)
+                : q.sentence.replace('_____', `<span class="inline-block border-b-2 border-slate-400 w-16 text-center text-slate-400 font-semibold">_____</span>`);
+
+            return `
+                <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-xs">
+                    <p class="text-sm sm:text-[15px] font-medium text-slate-800 leading-relaxed mb-3">
+                        ${formattedSentence}
+                    </p>
+                    <div class="grid grid-cols-3 gap-2">
+                        ${q.options.map(opt => {
+                            let btnStyle = "bg-slate-50 border-slate-200 text-slate-700 hover:border-green-500 hover:bg-green-50/50";
+                            if (isAnswered) {
+                                if (opt === q.answer && selectedVal === opt) {
+                                    btnStyle = "bg-green-600 border-green-700 text-white font-bold shadow-xs";
+                                } else if (selectedVal === opt && opt !== q.answer) {
+                                    btnStyle = "bg-red-50 border-red-400 text-red-700 font-bold";
+                                } else {
+                                    btnStyle = "bg-slate-50 border-slate-200 text-slate-400";
+                                }
+                            }
+                            return `
+                                <button type="button"
+                                    onclick="selectAnswer(${slideIdx}, ${qIdx}, '${opt.replace(/'/g, "\\'")}')"
+                                    class="py-1.5 px-2 rounded-lg border text-xs sm:text-sm font-semibold transition text-center cursor-pointer ${btnStyle}">
+                                    ${opt}
+                                </button>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // 3. EQUIVALENTS SLIDES TEMPLATE (Slides 10 & 11)
+        function renderEquivalentsSlide(slide, slideIdx) {
+            const answers = userAnswers[slideIdx] || {};
+            const hasAnsweredAny = Object.keys(answers).length > 0;
+
+            return `
+                <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-8 shadow-sm">
+                    <div class="pb-5 border-b border-slate-200 mb-6">
+                        <span class="inline-block text-xs font-bold uppercase tracking-wider text-green-800 bg-green-50 border border-green-200 px-3 py-1 rounded-full mb-2">
+                            Semi-Modals & Tense Equivalents
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                            ${slide.title}
+                        </h2>
+                        <p class="text-sm sm:text-base text-slate-600 mt-1">${slide.subtitle}</p>
+                    </div>
+
+                    <!-- 3 Equivalents Cards -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+                        ${slide.items.map(item => `
+                            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between">
+                                <div>
+                                    <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">${item.replaces}</div>
+                                    <h3 class="text-lg font-extrabold text-green-700 mb-2">${item.name}</h3>
+                                    <p class="text-sm text-slate-700 leading-relaxed mb-4">${item.desc}</p>
+                                </div>
+                                <div class="bg-white border border-slate-200 rounded-lg p-3 space-y-2">
+                                    <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Examples</div>
+                                    ${item.examples.map(ex => `
+                                        <p class="text-xs sm:text-sm text-slate-800 leading-snug border-b last:border-b-0 border-slate-100 pb-1.5 last:pb-0">
+                                            ${ex}
+                                        </p>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <!-- Mini Practice Bar at Bottom -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700">Practice — Choose the Correct Equivalent</h3>
+                            ${hasAnsweredAny ? `
+                                <button onclick="resetSlideAnswers(${slideIdx})" class="text-xs font-semibold text-slate-600 hover:text-slate-900 underline">
+                                    Reset
+                                </button>
+                            ` : ''}
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            ${slide.miniQuiz.map((q, qIdx) => renderQuestionCard(slideIdx, qIdx, q, answers[qIdx])).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 4. LARGE PRACTICE SLIDE TEMPLATE (Slide 9: 20 Questions & Slide 12: 8 Questions)
+        function renderLargeQuizSlide(slide, slideIdx, isTwenty) {
+            const answers = userAnswers[slideIdx] || {};
+            const total = slide.questions.length;
+            let correctCount = 0;
+            let answeredCount = 0;
+
+            slide.questions.forEach((q, idx) => {
+                if (answers[idx] !== undefined) {
+                    answeredCount++;
+                    if (answers[idx] === q.a) correctCount++;
+                }
+            });
+
+            return `
+                <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-8 shadow-sm">
+                    <!-- Header & Score Bar -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-200 mb-6">
+                        <div>
+                            <span class="inline-block text-xs font-bold uppercase tracking-wider text-green-800 bg-green-50 border border-green-200 px-3 py-1 rounded-full mb-2">
+                                Interactive Review • ${total} Sentences
+                            </span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                                ${slide.title}
+                            </h2>
+                            <p class="text-sm text-slate-600 mt-1">${slide.subtitle}</p>
+                        </div>
+
+                        <div class="flex items-center gap-3 self-start sm:self-center">
+                            <div class="bg-slate-50 border border-slate-200 px-4 py-2 rounded-xl text-right">
+                                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Score</div>
+                                <div class="text-lg font-extrabold text-green-700">${correctCount} / ${total}</div>
+                            </div>
+                            <button onclick="resetSlideAnswers(${slideIdx})" class="px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs sm:text-sm font-semibold transition">
+                                Reset All
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Questions Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 ${isTwenty ? 'max-h-[58vh] overflow-y-auto pr-1' : ''}">
+                        ${slide.questions.map((q, qIdx) => {
+                            const selectedVal = answers[qIdx];
+                            const isAnswered = selectedVal !== undefined;
+                            const formattedSentence = isAnswered
+                                ? q.s.replace('_____', `<span class="modal-verb">${selectedVal}</span>`)
+                                : q.s.replace('_____', `<span class="inline-block border-b-2 border-slate-400 w-16 text-center text-slate-400 font-semibold">_____</span>`);
+
+                            return `
+                                <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between gap-3">
+                                    <p class="text-sm sm:text-[15px] font-medium text-slate-800 leading-relaxed">
+                                        ${formattedSentence}
+                                    </p>
+                                    <div class="grid grid-cols-3 gap-2">
+                                        ${q.opts.map(opt => {
+                                            let btnClass = "bg-white border-slate-200 text-slate-700 hover:border-green-500 hover:bg-green-50";
+                                            if (isAnswered) {
+                                                if (opt === q.a && selectedVal === opt) {
+                                                    btnClass = "bg-green-600 border-green-700 text-white font-bold";
+                                                } else if (selectedVal === opt && opt !== q.a) {
+                                                    btnClass = "bg-red-50 border-red-400 text-red-700 font-bold";
+                                                } else {
+                                                    btnClass = "bg-white border-slate-200 text-slate-400";
+                                                }
+                                            }
+                                            return `
+                                                <button type="button"
+                                                    onclick="selectAnswer(${slideIdx}, ${qIdx}, '${opt.replace(/'/g, "\\'")}')"
+                                                    class="py-1.5 px-2 rounded-lg border text-xs sm:text-sm font-semibold transition text-center cursor-pointer ${btnClass}">
+                                                    ${opt}
+                                                </button>
+                                            `;
+                                        }).join('')}
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Start presentation on load
+        window.onload = initPresentation;
+    </script>
+</body>
+</html>
